@@ -22,8 +22,8 @@ services:
       retries: 5
       test: ["CMD", "nautobot-server", "health_check"]
     depends_on:
-      - "nautobot"
-      - "redis"
+      nautobot:
+        condition: service_healthy
     env_file:
       - "./local.env"
     tty: true
@@ -40,8 +40,8 @@ services:
       retries: 5
       test: ["CMD", "nautobot-server", "health_check"]
     depends_on:
-      - "nautobot"
-      - "redis"
+      nautobot:
+        condition: service_healthy
     env_file:
       - "./local.env"
     tty: true
@@ -66,3 +66,5 @@ services:
     restart: "unless-stopped"
 volumes:
   db_data:
+
+
