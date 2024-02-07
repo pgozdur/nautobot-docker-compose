@@ -27,6 +27,7 @@ services:
     env_file:
       - "./local.env"
     tty: true
+    restart: "unless-stopped"
   # ----------------------------------
   # Celery beat must only be used in > 1.2.0 installs. If setting to a previous install, remove this worker
   # ----------------------------------
@@ -45,6 +46,7 @@ services:
     env_file:
       - "./local.env"
     tty: true
+    restart: "unless-stopped"
   redis:
     image: "redis:alpine"
     env_file:
